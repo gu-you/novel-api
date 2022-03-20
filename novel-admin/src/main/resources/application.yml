@@ -1,0 +1,23 @@
+# 项目端口以及tomcat服务器编码
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  application:
+    name: novel
+  # 激活配置文件
+  profiles:
+    active: dev
+#加入以下配置 对应生成 mapper.xml 的路径
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+#swagger 开关
+swagger2:
+  enable: true
+#logging配置
+logging:
+  file: ${logging.path}/${spring.application.name}.log
+  path: logs
+  level:
+    com.study: debug
