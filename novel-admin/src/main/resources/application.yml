@@ -21,3 +21,14 @@ logging:
   path: logs
   level:
     com.study: debug
+jwt:
+  #请求头
+  header: Authorization
+  #盐值
+  base64-secret: meng
+  #过期时间
+  token-validity-in-seconds: 14400000
+
+
+
+

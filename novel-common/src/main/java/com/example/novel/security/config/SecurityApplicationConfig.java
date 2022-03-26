@@ -1,4 +1,4 @@
-package com.example.common.security.config;
+package com.example.novel.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
