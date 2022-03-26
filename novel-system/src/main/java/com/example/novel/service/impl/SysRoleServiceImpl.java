@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.example.novel.domain.SysRole;
 import com.example.novel.mapper.SysRoleMapper;
 import com.example.novel.service.SysRoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  *
@@ -17,4 +20,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> implements SysRoleService {
 
+    @Autowired
+    private SysRoleMapper roleMapper;
+
+    /**
+     * 查询列表
+     * @param sysRole
+     * @return
+     */
+    @Override
+    public List<SysRole> selectSysRoleList(SysRole sysRole) {
+        return roleMapper.selectSysRoleList(sysRole);
+    }
 }

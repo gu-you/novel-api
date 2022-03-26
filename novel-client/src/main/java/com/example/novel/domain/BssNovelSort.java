@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotations.TableLogic;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.FieldFill;
 import com.baomidou.mybatisplus.enums.IdType;
+import com.example.novel.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,7 +27,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @TableName("bss_novel_sort")
-public class BssNovelSort implements Serializable {
+public class BssNovelSort extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -57,6 +59,7 @@ public class BssNovelSort implements Serializable {
 
 
     @TableField(value = "create_at", fill = FieldFill.INSERT)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createAt;
 
 
@@ -65,6 +68,7 @@ public class BssNovelSort implements Serializable {
 
 
     @TableField(value = "update_at", fill = FieldFill.INSERT_UPDATE)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateAt;
 
 

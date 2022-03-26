@@ -2,6 +2,7 @@ package com.example.novel.domain;
 
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.example.novel.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +21,7 @@ import java.io.Serializable;
 @Builder
 @Data
 @TableName("sys_user_role")
-public class SysUserRole implements Serializable {
+public class SysUserRole extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

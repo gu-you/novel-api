@@ -3,6 +3,8 @@ package com.example.novel.service;
 import com.baomidou.mybatisplus.service.IService;
 import com.example.novel.domain.SysRole;
 
+import java.util.List;
+
 /**
  *
  * @ClassName: SysRoleService
@@ -12,4 +14,10 @@ import com.example.novel.domain.SysRole;
  */
 public interface SysRoleService extends IService<SysRole> {
 
+    /**
+     * 查询列表数据
+     * @param sysRole
+     * @return
+     */
+    List<SysRole> selectSysRoleList(SysRole sysRole);
 }

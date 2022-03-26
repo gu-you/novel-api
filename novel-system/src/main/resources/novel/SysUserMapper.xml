@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.novel.mapper.SysUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.novel.com.example.novel.entity.SysUser">
+        <id column="user_id" property="userId"/>
+        <result column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="pass_word" property="passWord"/>
+        <result column="six" property="six"/>
+        <result column="address" property="address"/>
+        <result column="phone" property="phone"/>
+        <result column="e_mail" property="eMail"/>
+        <result column="file_path" property="filePath"/>
+        <result column="status" property="status"/>
+        <result column="is_vip" property="isVip"/>
+        <result column="create_at" property="createAt"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_at" property="updateAt"/>
+        <result column="update_by" property="updateBy"/>
+    </resultMap>
+
+    <sql id="selectSysUserVo">
+        select role_id,role_key,role_name,del_flag,version,create_at,create_by,update_at,update_by FROM sys_role
+    </sql>
+
+    <select id="selectSysUser" parameterType="SysUser" resultMap="BaseResultMap">
+        <include refid="selectSysUserVo"/>
+        <where>
+            <if test="roleKey != '' and roleKey != null">and role_key = #{roleKey}</if>
+            <if test="roleName != null and roleName != ''">and role_name = #{roleName}</if>
+            <if test="delFlag != null and delFlag != ''">and del_flag = #{delFlag}</if>
+            <if test="version != null and version != ''">and version = #{version}</if>
+            <if test="createBy != null and createBy != ''">and create_by = #{createBy}</if>
+        </where>
+        order by create_at desc
+    </select>
+
+</mapper>
