@@ -1,6 +1,6 @@
 package com.example.novel.service;
 
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.novel.domain.SysRole;
 
 import java.util.List;
@@ -20,4 +20,11 @@ public interface SysRoleService extends IService<SysRole> {
      * @return
      */
     List<SysRole> selectSysRoleList(SysRole sysRole);
+
+    /**
+     * 获取当前用户id所拥有的权限
+     * @param userId
+     * @return
+     */
+    List<SysRole> selectSysRoleByUserId(Integer userId);
 }

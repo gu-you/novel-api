@@ -1,6 +1,6 @@
 package com.example.novel.service;
 
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.novel.domain.SysUserRole;
 
 /**

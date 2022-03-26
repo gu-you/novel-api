@@ -3,7 +3,7 @@
 <mapper namespace="com.example.novel.mapper.SysRoleMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.example.novel.com.example.novel.entity.SysRole">
+    <resultMap id="BaseResultMap" type="com.example.novel.domain.SysRole">
         <id column="role_id" property="roleId"/>
         <result column="role_key" property="roleKey"/>
         <result column="role_name" property="roleName"/>
@@ -14,5 +14,31 @@
         <result column="update_at" property="updateAt"/>
         <result column="update_by" property="updateBy"/>
     </resultMap>
+
+    <sql id="selectSysRoleVo">
+        select role_id,role_key,role_name,del_flag,version,create_at,create_by,update_at,update_by FROM sys_role
+    </sql>
+
+    <select id="selectSysRoleList" parameterType="com.example.novel.domain.SysRole" resultMap="BaseResultMap">
+        <include refid="selectSysRoleVo"/>
+        <where>
+            <if test="roleKey != '' and roleKey != null">and role_key = #{roleKey}</if>
+            <if test="roleName != null and roleName != ''">and role_name = #{roleName}</if>
+            <if test="delFlag != null and delFlag != ''">and del_flag = #{delFlag}</if>
+            <if test="version != null and version != ''">and version = #{version}</if>
+            <if test="createBy != null and createBy != ''">and create_by = #{createBy}</if>
+        </where>
+        order by create_at desc
+    </select>
+
+    <select id="selectSysRoleByUserId" parameterType="Integer" resultMap="BaseResultMap">
+        SELECT
+            r.*
+        FROM
+            sys_user_role ur
+            LEFT JOIN sys_role r ON ur.role_id = r.role_id
+        WHERE
+            ur.user_id = #{userId}
+    </select>
 
 </mapper>

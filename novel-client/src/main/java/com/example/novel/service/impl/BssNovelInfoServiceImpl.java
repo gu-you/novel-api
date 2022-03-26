@@ -1,6 +1,6 @@
 package com.example.novel.service.impl;
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.novel.domain.BssNovelInfo;
 import com.example.novel.mapper.BssNovelInfoMapper;
 import com.example.novel.service.BssNovelInfoService;

@@ -3,7 +3,7 @@
 <mapper namespace="com.example.novel.mapper.BssNovelInfoMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.example.novel.com.example.novel.entity.BssNovelInfo">
+    <resultMap id="BaseResultMap" type="com.example.novel.domain.BssNovelInfo">
         <result column="id" property="id"/>
         <result column="novel_name" property="novelName"/>
         <result column="sort_id" property="sortId"/>

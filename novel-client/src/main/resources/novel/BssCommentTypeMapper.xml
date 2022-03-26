@@ -3,7 +3,7 @@
 <mapper namespace="com.example.novel.mapper.BssCommentTypeMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.example.novel.com.example.novel.entity.BssCommentType">
+    <resultMap id="BaseResultMap" type="com.example.novel.domain.BssCommentType">
         <id column="id" property="id"/>
         <result column="comment_type" property="commentType"/>
         <result column="create_at" property="createAt"/>

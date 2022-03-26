@@ -3,7 +3,7 @@
 <mapper namespace="com.example.novel.mapper.BssReadHistoryMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.example.novel.com.example.novel.entity.BssReadHistory">
+    <resultMap id="BaseResultMap" type="com.example.novel.domain.BssReadHistory">
         <id column="id" property="id"/>
         <result column="user_id" property="userId"/>
         <result column="novel_info_id" property="novelInfoId"/>

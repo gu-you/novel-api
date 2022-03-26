@@ -3,7 +3,7 @@
 <mapper namespace="com.example.novel.mapper.SysUserRoleMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.example.novel.com.example.novel.entity.SysUserRole">
+    <resultMap id="BaseResultMap" type="com.example.novel.domain.SysUserRole">
         <result column="role_id" property="roleId"/>
         <result column="user_id" property="userId"/>
     </resultMap>

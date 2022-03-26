@@ -1,9 +1,5 @@
 package com.example.novel.domain;
 
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableLogic;
-import com.baomidou.mybatisplus.annotations.TableName;
-import com.baomidou.mybatisplus.enums.FieldFill;
 import com.example.novel.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -24,115 +20,115 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@TableName("bss_novel_info")
+// @TableName("bss_novel_info")
 public class BssNovelInfo extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 
-    @TableField("id")
+    // @TableField("id")
     private Integer id;
 
 
     /**
      * 小说名称
      */
-    @TableField("novel_name")
+    // @TableField("novel_name")
     private String novelName;
 
 
     /**
      * 分类id
      */
-    @TableField("sort_id")
+    // @TableField("sort_id")
     private Integer sortId;
 
 
     /**
      * 是否删除
      */
-    @TableField("del_flag")
-    @TableLogic
+    // @TableField("del_flag")
+    // @TableLogic
     private String delFlag;
 
 
     /**
      * 文件地址
      */
-    @TableField("file_path")
+    // @TableField("file_path")
     private String filePath;
 
 
     /**
      * 封面地址
      */
-    @TableField("file_cover_path")
+    // @TableField("file_cover_path")
     private String fileCoverPath;
 
 
     /**
      * 简介
      */
-    @TableField("synopsis")
+    // @TableField("synopsis")
     private String synopsis;
 
 
     /**
      * 字数
      */
-    @TableField("word_num")
+    // @TableField("word_num")
     private String wordNum;
 
 
     /**
      * 是否完结
-     */
-    @TableField("is_end")
+    //  */
+    // @TableField("is_end")
     private String isEnd;
 
 
     /**
      * 作者
      */
-    @TableField("author")
+    // @TableField("author")
     private String author;
 
 
     /**
      * 主人公
      */
-    @TableField("protagonist")
+    // @TableField("protagonist")
     private String protagonist;
 
 
     /**
      * 最新目录
      */
-    @TableField("catalogue")
+    // @TableField("catalogue")
     private String catalogue;
 
 
     /**
      * 是否上架
      */
-    @TableField("is_shelves")
+    // @TableField("is_shelves")
     private String isShelves;
 
 
-    @TableField(value = "create_at", fill = FieldFill.INSERT)
+    // @TableField(value = "create_at", fill = FieldFill.INSERT)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createAt;
 
 
-    @TableField("create_by")
+    // @TableField("create_by")
     private String createBy;
 
 
-    @TableField("update_by")
+    // @TableField("update_by")
     private String updateBy;
 
 
-    @TableField(value = "update_at", fill = FieldFill.INSERT_UPDATE)
+    // @TableField(value = "update_at", fill = FieldFill.INSERT_UPDATE)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateAt;
 

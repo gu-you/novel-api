@@ -1,4 +1,4 @@
-package com.example.novel;
+package com.example.novel.utils;
 
 import cn.hutool.core.util.ObjectUtil;
 import org.springframework.web.context.request.RequestContextHolder;

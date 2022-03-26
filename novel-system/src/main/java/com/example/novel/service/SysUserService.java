@@ -1,6 +1,6 @@
 package com.example.novel.service;
 
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.novel.domain.SysUser;
 
 /**
@@ -12,4 +12,18 @@ import com.example.novel.domain.SysUser;
  */
 public interface SysUserService extends IService<SysUser> {
 
+    /**
+     * 根据用户名获取用户信息
+     * @param username
+     * @return
+     */
+    SysUser selectSysUserByUserName(String username);
+
+    /**
+     * 用户登陆，成功后返回token
+     * @param userName
+     * @param passWord
+     * @return
+     */
+    String login(String userName, String passWord);
 }

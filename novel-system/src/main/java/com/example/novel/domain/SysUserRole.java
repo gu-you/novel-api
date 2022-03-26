@@ -1,7 +1,5 @@
 package com.example.novel.domain;
 
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableName;
 import com.example.novel.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +18,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Builder
 @Data
-@TableName("sys_user_role")
+// @TableName("sys_user_role")
 public class SysUserRole extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -28,13 +26,13 @@ public class SysUserRole extends BaseEntity implements Serializable {
     /**
      * 权限id
      */
-    @TableField("role_id")
+    // @TableField("role_id")
     private Integer roleId;
 
 
     /**
      * 用户id
      */
-    @TableField("user_id")
+    // @TableField("user_id")
     private Integer userId;
 }
