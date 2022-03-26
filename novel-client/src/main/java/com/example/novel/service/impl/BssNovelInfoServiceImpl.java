@@ -1,8 +1,9 @@
 package com.example.novel.service.impl;
 
-import com.example.novel.com.example.novel.entity.BssNovelInfo;
-import com.example.novel.com.example.novel.mapper.BssNovelInfoMapper;
-import com.example.novel.base.BaseService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.example.novel.domain.BssNovelInfo;
+import com.example.novel.mapper.BssNovelInfoMapper;
+import com.example.novel.service.BssNovelInfoService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,6 +14,6 @@ import org.springframework.stereotype.Service;
  * @date 2022-03-26
  */
 @Service
-public class BssNovelInfoServiceImpl extends BaseService<BssNovelInfoMapper, BssNovelInfo> {
+public class BssNovelInfoServiceImpl extends ServiceImpl<BssNovelInfoMapper, BssNovelInfo> implements BssNovelInfoService {
 
 }

@@ -1,5 +1,8 @@
 package com.example.novel.service;
 
+import com.baomidou.mybatisplus.service.IService;
+import com.example.novel.domain.BssCommentType;
+
 /**
  *
  * @ClassName: BssCommentTypeService
@@ -7,6 +10,6 @@ package com.example.novel.service;
  * @author You
  * @date 2022-03-26
  */
-public class BssCommentTypeService{
+public interface BssCommentTypeService extends IService<BssCommentType> {
 
 }

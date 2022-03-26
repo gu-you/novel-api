@@ -30,11 +30,11 @@
             <version>2.9.2</version>
         </dependency>
 
-        <dependency>
+       <!-- <dependency>
             <groupId>com.example</groupId>
             <artifactId>novel-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+        </dependency>-->
 
         <!--shiro 依赖-->
         <dependency>

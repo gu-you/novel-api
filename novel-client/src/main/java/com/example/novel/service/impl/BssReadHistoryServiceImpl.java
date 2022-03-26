@@ -1,8 +1,9 @@
 package com.example.novel.service.impl;
 
-import com.example.novel.com.example.novel.entity.BssReadHistory;
-import com.example.novel.com.example.novel.mapper.BssReadHistoryMapper;
-import com.example.novel.base.BaseService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.example.novel.domain.BssReadHistory;
+import com.example.novel.mapper.BssReadHistoryMapper;
+import com.example.novel.service.BssReadHistoryService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,6 +14,6 @@ import org.springframework.stereotype.Service;
  * @date 2022-03-26
  */
 @Service
-public class BssReadHistoryServiceImpl extends BaseService<BssReadHistoryMapper, BssReadHistory> {
+public class BssReadHistoryServiceImpl extends ServiceImpl<BssReadHistoryMapper, BssReadHistory> implements BssReadHistoryService {
 
 }

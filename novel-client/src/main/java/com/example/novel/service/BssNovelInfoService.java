@@ -1,7 +1,7 @@
 package com.example.novel.service;
 
-import com.example.novel.com.example.novel.entity.BssNovelInfo;
 import com.baomidou.mybatisplus.service.IService;
+import com.example.novel.domain.BssNovelInfo;
 
 /**
  *
@@ -10,6 +10,6 @@ import com.baomidou.mybatisplus.service.IService;
  * @author You
  * @date 2022-03-26
  */
-public class BssNovelInfoService{
+public interface BssNovelInfoService extends IService<BssNovelInfo> {
 
 }

@@ -1,8 +1,9 @@
 package com.example.novel.service.impl;
 
-import com.example.novel.com.example.novel.entity.BssCommentType;
-import com.example.novel.com.example.novel.mapper.BssCommentTypeMapper;
-import com.example.novel.base.BaseService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.example.novel.domain.BssCommentType;
+import com.example.novel.mapper.BssCommentTypeMapper;
+import com.example.novel.service.BssCommentTypeService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,6 +14,6 @@ import org.springframework.stereotype.Service;
  * @date 2022-03-26
  */
 @Service
-public class BssCommentTypeServiceImpl extends BaseService<BssCommentTypeMapper, BssCommentType> {
+public class BssCommentTypeServiceImpl extends ServiceImpl<BssCommentTypeMapper, BssCommentType> implements BssCommentTypeService {
 
 }

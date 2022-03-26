@@ -2,6 +2,7 @@ package com.example.novel.service.impl;
 
 
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.example.novel.domain.SysRole;
 import com.example.novel.mapper.SysRoleMapper;
 import com.example.novel.service.SysRoleService;
 import org.springframework.stereotype.Service;

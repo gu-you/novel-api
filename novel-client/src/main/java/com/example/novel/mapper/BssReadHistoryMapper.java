@@ -1,8 +1,10 @@
 package com.example.novel.mapper;
 
-import com.example.novel.com.example.novel.entity.BssReadHistory;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.example.novel.domain.BssReadHistory;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface BssReadHistoryMapper extends BaseMapper<BssReadHistory> {
 
 }
