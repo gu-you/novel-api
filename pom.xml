@@ -21,7 +21,7 @@
         <module>novel-client</module>
         <module>novel-common</module>
         <module>novel-system</module>
-        <module>novel-generator</module>
+<!--        <module>novel-generator</module>-->
     </modules>
     <dependencies>
         <dependency>

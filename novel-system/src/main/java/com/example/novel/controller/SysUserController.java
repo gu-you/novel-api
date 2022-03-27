@@ -1,10 +1,8 @@
 package com.example.novel.controller;
 
 import com.example.novel.BaseController;
-import com.example.novel.PageTable;
 import com.example.novel.contant.ResultContant;
 import com.example.novel.domain.AjaxResult;
-import com.example.novel.domain.SysRole;
 import com.example.novel.domain.SysUser;
 import com.example.novel.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;

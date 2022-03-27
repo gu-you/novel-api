@@ -1,13 +1,11 @@
 package com.example.novel.controller;
 
 import com.example.novel.BaseController;
-import com.example.novel.PageTable;
 import com.example.novel.contant.ResultContant;
 import com.example.novel.domain.AjaxResult;
 import com.example.novel.domain.BssCommentType;
 import com.example.novel.service.BssCommentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
