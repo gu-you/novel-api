@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.example.novel.domain.BssNovelSort;
 import com.example.novel.mapper.BssNovelSortMapper;
 import com.example.novel.service.BssNovelSortService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  *
@@ -16,4 +19,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class BssNovelSortServiceImpl extends ServiceImpl<BssNovelSortMapper, BssNovelSort> implements BssNovelSortService {
 
+    @Autowired
+    private BssNovelSortMapper bssNovelSortMapper;
+    @Override
+    public List<BssNovelSort> selectBssNovelSortList(BssNovelSort bssNovelSort) {
+        return bssNovelSortMapper.selectBssNovelSortList(bssNovelSort);
+    }
 }

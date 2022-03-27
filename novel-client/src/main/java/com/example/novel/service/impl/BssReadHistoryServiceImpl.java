@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.example.novel.domain.BssReadHistory;
 import com.example.novel.mapper.BssReadHistoryMapper;
 import com.example.novel.service.BssReadHistoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  *
@@ -16,4 +19,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class BssReadHistoryServiceImpl extends ServiceImpl<BssReadHistoryMapper, BssReadHistory> implements BssReadHistoryService {
 
+    @Autowired
+    private BssReadHistoryMapper bssReadHistoryMapper;
+
+    @Override
+    public List<BssReadHistory> selectBssReadHistoryList(BssReadHistory bssReadHistory) {
+        return bssReadHistoryMapper.selectBssReadHistoryList(bssReadHistory);
+    }
 }

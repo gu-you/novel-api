@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * @author You
  * @ClassName: SysRoleController
- * @Description: TODO(这里用一句话描述这个类的作用)
+ * @Description: 系统角色
  * @date 2022-03-26
  */
 @RestController
@@ -36,7 +36,7 @@ public class SysRoleController extends BaseController {
     }
 
     @PutMapping("/edit")
-    public AjaxResult edit(SysRole sysRole) {
+    public AjaxResult edit(@RequestBody SysRole sysRole) {
         try {
             sysRoleService.updateById(sysRole);
             return success(200, ResultContant.SUCCESS);
@@ -58,7 +58,6 @@ public class SysRoleController extends BaseController {
     }
 
     @GetMapping("/getInfo/{id}")
-    @RequestMapping(method = RequestMethod.GET, value = "/detail")
     public AjaxResult detail(@PathVariable Integer id) {
         try {
             SysRole sysRole = sysRoleService.selectById(id);

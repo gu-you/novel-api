@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.example.novel.domain.BssNovelAssess;
 import com.example.novel.mapper.BssNovelAssessMapper;
 import com.example.novel.service.BssNovelAssessService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  *
@@ -16,4 +19,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class BssNovelAssessServiceImpl extends ServiceImpl<BssNovelAssessMapper, BssNovelAssess> implements BssNovelAssessService {
 
+    @Autowired
+    private BssNovelAssessMapper bssNovelAssessMapper;
+    @Override
+    public List<BssNovelAssess> selectBssNovelAssessList(BssNovelAssess bssNovelAssess) {
+        return bssNovelAssessMapper.selectBssNovelAssessList(bssNovelAssess);
+    }
 }

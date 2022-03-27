@@ -3,6 +3,8 @@ package com.example.novel.service;
 import com.baomidou.mybatisplus.service.IService;
 import com.example.novel.domain.BssNovelAssess;
 
+import java.util.List;
+
 /**
  *
  * @ClassName: BssNovelAssessService
@@ -11,5 +13,7 @@ import com.example.novel.domain.BssNovelAssess;
  * @date 2022-03-26
  */
 public interface BssNovelAssessService extends IService<BssNovelAssess> {
+
+    List<BssNovelAssess> selectBssNovelAssessList(BssNovelAssess bssNovelAssess);
 
 }

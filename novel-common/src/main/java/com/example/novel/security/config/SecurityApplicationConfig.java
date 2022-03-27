@@ -1,3 +1,4 @@
+/*
 package com.example.novel.security.config;
 
 import org.springframework.context.annotation.Bean;
@@ -9,22 +10,26 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+*/
 /**
  * @Configuration:表示此类为配置类，加载到spring容器中
  * @EnableWebSecurity:表示开启自定义用户
  * @EnableGlobalMethodSecurity:表示启用方法级别的认证
  *          prePostEnabled:表示启动，默认为false
  *          true:表示可以使用@PreAuthorize注解 和 @PostAuthorize
- */
+ *//*
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityApplicationConfig extends WebSecurityConfigurerAdapter {
-    /**
+    */
+/**
      * springsecurity 5.0之后设置的密码必须是加密的，否则报错
      * @param auth
      * @throws Exception
-     */
+     *//*
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("zhangsan")
@@ -39,11 +44,14 @@ public class SecurityApplicationConfig extends WebSecurityConfigurerAdapter {
                 .roles("admin","nolmal");
     }
 
-    /**
+    */
+/**
      * 创建密码加密类
-     */
+     *//*
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 }
+*/

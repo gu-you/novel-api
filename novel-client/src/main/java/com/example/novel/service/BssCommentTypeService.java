@@ -3,6 +3,8 @@ package com.example.novel.service;
 import com.baomidou.mybatisplus.service.IService;
 import com.example.novel.domain.BssCommentType;
 
+import java.util.List;
+
 /**
  *
  * @ClassName: BssCommentTypeService
@@ -11,5 +13,7 @@ import com.example.novel.domain.BssCommentType;
  * @date 2022-03-26
  */
 public interface BssCommentTypeService extends IService<BssCommentType> {
+
+    List<BssCommentType> selectBssCommentTypeList(BssCommentType bssCommentType);
 
 }

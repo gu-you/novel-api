@@ -3,6 +3,8 @@ package com.example.novel.service;
 import com.baomidou.mybatisplus.service.IService;
 import com.example.novel.domain.BssReadHistory;
 
+import java.util.List;
+
 /**
  *
  * @ClassName: BssReadHistoryService
@@ -11,5 +13,7 @@ import com.example.novel.domain.BssReadHistory;
  * @date 2022-03-26
  */
 public interface BssReadHistoryService extends IService<BssReadHistory> {
+
+    List<BssReadHistory> selectBssReadHistoryList(BssReadHistory bssReadHistory);
 
 }

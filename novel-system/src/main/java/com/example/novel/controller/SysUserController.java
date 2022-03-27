@@ -4,14 +4,15 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.example.novel.BaseController;
+import com.example.novel.PageTable;
 import com.example.novel.contant.ResultContant;
 import com.example.novel.domain.AjaxResult;
+import com.example.novel.domain.SysRole;
 import com.example.novel.domain.SysUser;
 import com.example.novel.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,13 +22,15 @@ import java.util.List;
  * @Description: TODO(这里用一句话描述这个类的作用)
  * @date 2022-03-26
  */
-@Controller
+
+@RestController
 @RequestMapping(value = "/SysUser")
 public class SysUserController extends BaseController {
     @Autowired
     private SysUserService sysUserService;
-    @RequestMapping(method = RequestMethod.POST, value = "/add")
-    public AjaxResult add(SysUser sysUser) {
+
+    @PostMapping("/add")
+    public AjaxResult add(@RequestBody SysUser sysUser) {
         try {
             sysUserService.insert(sysUser);
             return success(200, ResultContant.SUCCESS);
@@ -37,8 +40,8 @@ public class SysUserController extends BaseController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/edit")
-    public AjaxResult edit(SysUser SysUser) {
+    @PostMapping("/edit")
+    public AjaxResult edit(@RequestBody SysUser SysUser) {
         try {
             sysUserService.updateById(SysUser);
             return success(200, ResultContant.SUCCESS);
@@ -48,8 +51,8 @@ public class SysUserController extends BaseController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/delete")
-    public AjaxResult delete(String ids) {
+    @DeleteMapping("/del/{ids}")
+    public AjaxResult delete(@PathVariable String ids) {
         //ValidateUtil.isNotBlank(ids, "主键参数非法，操作失败，请检查");
         try {
             List<String> idList = StrUtil.split(ids, ',');
@@ -61,8 +64,8 @@ public class SysUserController extends BaseController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/detail")
-    public AjaxResult detail(String id) {
+    @GetMapping("/getInfo/{id}")
+    public AjaxResult detail(@PathVariable String id) {
         try {
             //ValidateUtil.isNotBlank(id, "主键参数非法，操作失败，请检查");
             SysUser sysUser = sysUserService.selectById(id);
@@ -73,28 +76,16 @@ public class SysUserController extends BaseController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/queryList")
-    public AjaxResult queryList(SysUser sysUser) {
+    @GetMapping("/list")
+    public PageTable queryList(SysUser sysUser) {
+        startPage();
+        List<SysUser> list = null;
         try {
-            EntityWrapper<SysUser> wrapper = new EntityWrapper<SysUser>();
-            List<SysUser> list = sysUserService.selectList(wrapper);
-            return success(list, ResultContant.SUCCESS);
+            list = sysUserService.selectSysUserList(sysUser);
         } catch (Exception e) {
             e.printStackTrace();
-            return error(500, ResultContant.ERROR);
         }
+        return getTable(list);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/queryPageList")
-    public AjaxResult queryPageList() {
-        try {
-            EntityWrapper<SysUser> wrapper = new EntityWrapper<SysUser>();
-            Page<SysUser> pg = new Page<SysUser>(pageNum, pageSize);
-            Page<SysUser> list = sysUserService.selectPage(pg, wrapper);
-            return success(list, ResultContant.SUCCESS);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return error(500, ResultContant.ERROR);
-        }
-    }
 }

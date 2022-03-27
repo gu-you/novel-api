@@ -3,6 +3,10 @@ package com.example.novel.service;
 import com.baomidou.mybatisplus.service.IService;
 import com.example.novel.domain.BssNovelSort;
 
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
+
 /**
  *
  * @ClassName: BssNovelSortService
@@ -12,4 +16,5 @@ import com.example.novel.domain.BssNovelSort;
  */
 public interface BssNovelSortService extends IService<BssNovelSort> {
 
+    List<BssNovelSort> selectBssNovelSortList(BssNovelSort bssNovelSort);
 }

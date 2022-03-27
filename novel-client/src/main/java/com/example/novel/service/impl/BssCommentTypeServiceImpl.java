@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.example.novel.domain.BssCommentType;
 import com.example.novel.mapper.BssCommentTypeMapper;
 import com.example.novel.service.BssCommentTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  *
@@ -16,4 +19,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class BssCommentTypeServiceImpl extends ServiceImpl<BssCommentTypeMapper, BssCommentType> implements BssCommentTypeService {
 
+    @Autowired
+    private BssCommentTypeMapper bssCommentTypeMapper;
+    @Override
+    public List<BssCommentType> selectBssCommentTypeList(BssCommentType bssCommentType) {
+        return bssCommentTypeMapper.selectBssCommentTypeList(bssCommentType);
+    }
 }
