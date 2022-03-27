@@ -1,6 +1,6 @@
 package com.example.novel.service.impl;
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.novel.domain.SysUserRole;
 import com.example.novel.mapper.SysUserRoleMapper;
 import com.example.novel.service.SysUserRoleService;
@@ -17,7 +17,7 @@ import java.util.List;
  * @date 2022-03-26
  */
 @Service
-public class SysUserRoleServiceImpl extends ServiceImpl<SysUserRoleMapper, SysUserRole> implements SysUserRoleService {
+public class SysUserRoleServiceImpl extends ServiceImpl<SysUserRoleMapper,SysUserRole> implements SysUserRoleService {
 
     @Autowired
     private SysUserRoleMapper sysUserRoleMapper;

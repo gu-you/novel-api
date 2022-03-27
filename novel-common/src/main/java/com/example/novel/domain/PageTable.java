@@ -1,4 +1,4 @@
-package com.example.novel;
+package com.example.novel.domain;
 
 import java.util.List;
 

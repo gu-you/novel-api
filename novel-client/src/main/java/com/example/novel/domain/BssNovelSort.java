@@ -1,11 +1,5 @@
 package com.example.novel.domain;
 
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableLogic;
-import com.baomidou.mybatisplus.annotations.TableName;
-import com.baomidou.mybatisplus.enums.FieldFill;
-import com.baomidou.mybatisplus.enums.IdType;
 import com.example.novel.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -26,52 +20,52 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@TableName("bss_novel_sort")
+// @TableName("bss_novel_sort")
 public class BssNovelSort extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 
-    @TableId(value = "id", type = IdType.ID_WORKER)
+    // @TableId(value = "id", type = IdType.ID_WORKER)
     private Integer id;
 
 
     /**
      * 分类名称
      */
-    @TableField("sort_name")
+    // @TableField("sort_name")
     private String sortName;
 
 
     /**
      * 版本
      */
-    @TableField("version")
+    // @TableField("version")
     private String version;
 
 
     /**
      * 删除
      */
-    @TableField("del_flag")
-    @TableLogic
+    // @TableField("del_flag")
+    // @TableLogic
     private String delFlag;
 
 
-    @TableField(value = "create_at", fill = FieldFill.INSERT)
+    // @TableField(value = "create_at", fill = FieldFill.INSERT)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createAt;
 
 
-    @TableField("create_by")
+    // @TableField("create_by")
     private String createBy;
 
 
-    @TableField(value = "update_at", fill = FieldFill.INSERT_UPDATE)
+    // @TableField(value = "update_at", fill = FieldFill.INSERT_UPDATE)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateAt;
 
 
-    @TableField("update_by")
+    // @TableField("update_by")
     private String updateBy;
 }

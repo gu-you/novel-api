@@ -1,6 +1,6 @@
 package com.example.novel.mapper;
 
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.novel.domain.SysRole;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -15,4 +15,11 @@ public interface SysRoleMapper extends BaseMapper<SysRole> {
      * @return
      */
     List<SysRole> selectSysRoleList(SysRole sysRole);
+
+    /**
+     * 获取当前用户id所拥有的权限
+     * @param userId
+     * @return
+     */
+    List<SysRole> selectSysRoleByUserId(Integer userId);
 }

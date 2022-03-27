@@ -1,8 +1,9 @@
 package com.example.novel.mapper;
 
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.novel.domain.SysUser;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,10 +11,9 @@ import java.util.List;
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
     /**
-     * 查询sysUser列表
-     * @param sysUser
+     * 根据用户名查询用户数据
+     * @param username
      * @return
      */
-    List<SysUser> selectSysUserList(SysUser sysUser);
-
+    SysUser selectSysUserByUserName(@Param("username") String username);
 }

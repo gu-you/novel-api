@@ -1,7 +1,5 @@
 package com.example.novel.service;
-
-import com.baomidou.mybatisplus.service.IService;
-import com.example.novel.domain.SysRole;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.novel.domain.SysUser;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +14,18 @@ import java.util.List;
  */
 public interface SysUserService extends IService<SysUser> {
 
-    List<SysUser> selectSysUserList(SysUser sysUser);
+    /**
+     * 根据用户名获取用户信息
+     * @param username
+     * @return
+     */
+    SysUser selectSysUserByUserName(String username);
 
+    /**
+     * 用户登陆，成功后返回token
+     * @param userName
+     * @param passWord
+     * @return
+     */
+    String login(String userName, String passWord);
 }

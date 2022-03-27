@@ -1,7 +1,7 @@
 package com.example.novel.service.impl;
 
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.novel.domain.SysRole;
 import com.example.novel.mapper.SysRoleMapper;
 import com.example.novel.service.SysRoleService;
@@ -31,5 +31,15 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
     @Override
     public List<SysRole> selectSysRoleList(SysRole sysRole) {
         return roleMapper.selectSysRoleList(sysRole);
+    }
+
+    /**
+     * 获取当前用户id所拥有的权限
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<SysRole> selectSysRoleByUserId(Integer userId) {
+        return roleMapper.selectSysRoleByUserId(userId);
     }
 }

@@ -3,6 +3,8 @@ package com.example.novel;
 import cn.hutool.core.util.ObjectUtil;
 import com.example.novel.contant.ResultContant;
 import com.example.novel.domain.AjaxResult;
+import com.example.novel.domain.PageTable;
+import com.example.novel.utils.ServletRequest;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
