@@ -1,5 +1,6 @@
 package com.example.novel.security;
 
+import com.example.novel.exception.BaseException;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
@@ -21,7 +22,7 @@ public class RestfulAccessDeniedHandler implements AccessDeniedHandler {
                        AccessDeniedException e) throws IOException{
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
-        response.getWriter().println(e.getMessage());
         response.getWriter().flush();
+        throw new BaseException(401,e.getMessage());
     }
 }

@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <!--classPathEntry:数据库的JDBC驱动,换成你自己的驱动位置  -->
-    <classPathEntry location="F:\mvnrepository\mysql\mysql-connector-java\5.1.28\mysql-connector-java-5.1.28.jar" />
+    <classPathEntry location="/Library/java/JavaVirtualMachines/maven/repository/mysql/mysql-connector-java/8.0.28/mysql-connector-java-8.0.28.jar" />
 
     <!-- 一个数据库一个context -->
     <!--defaultModelType="flat" 大数据字段，不分表 -->
@@ -23,8 +23,8 @@
         </commentGenerator>
 
         <!-- jdbc连接 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/company_frame" userId="root"
-                        password="root"/>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://122.9.68.52:3306/novel" userId="root"
+                        password="lyy123!@#"/>
         <!-- 类型转换 -->
         <javaTypeResolver>
             <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->

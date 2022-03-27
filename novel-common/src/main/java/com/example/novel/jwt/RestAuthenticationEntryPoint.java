@@ -1,5 +1,6 @@
 package com.example.novel.jwt;
 
+import com.example.novel.exception.BaseException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,7 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException{
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
-        response.getWriter().println(authException.getMessage());
         response.getWriter().flush();
+        throw new BaseException(401,authException.getMessage());
     }
 }

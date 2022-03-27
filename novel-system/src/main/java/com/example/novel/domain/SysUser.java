@@ -2,6 +2,8 @@ package com.example.novel.domain;
 
 import com.example.novel.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,32 +22,32 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @Data
-// @TableName("sys_user")
+@ApiModel("用户实体类")
 public class SysUser extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
 
-    // @TableField("id")
+    @ApiModelProperty("用户序列id")
     private String id;
     /**
      * 用户id
      */
-    // @TableId(value = "user_id", type = IdType.ID_WORKER)
+    @ApiModelProperty("用户自增id")
     private Integer userId;
 
 
     /**
      * 用户名称
      */
-    // @TableField("user_name")
+    @ApiModelProperty("用户名称")
     private String userName;
 
 
     /**
      * 密码
      */
-    // @TableField("pass_word")
+    @ApiModelProperty("用户密码")
     private String passWord;
 
 

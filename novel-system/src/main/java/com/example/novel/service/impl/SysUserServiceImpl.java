@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.novel.domain.AdminUserDetails;
 import com.example.novel.domain.SysRole;
 import com.example.novel.domain.SysUser;
+import com.example.novel.exception.BaseException;
 import com.example.novel.jwt.JwtTokenUtil;
 import com.example.novel.mapper.SysRoleMapper;
 import com.example.novel.mapper.SysUserMapper;
@@ -74,6 +75,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         } catch (AuthenticationException e) {
             e.printStackTrace();
             LOGGER.warn("登录异常{}", e.getMessage());
+        }
+        if (token == null) {
+            throw new BaseException(500, "用户名或密码错误");
         }
         return token;
     }

@@ -3,6 +3,7 @@ package com.example.novel.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.novel.domain.SysRole;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,5 +22,5 @@ public interface SysRoleMapper extends BaseMapper<SysRole> {
      * @param userId
      * @return
      */
-    List<SysRole> selectSysRoleByUserId(Integer userId);
+    List<SysRole> selectSysRoleByUserId(@Param("userId") Integer userId);
 }
