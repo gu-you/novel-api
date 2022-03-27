@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.novel.mapper.SysRoleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="SysRoleMap" type="SysRole">
+        <id column="role_id" property="roleId"/>
+        <result column="role_key" property="roleKey"/>
+        <result column="role_name" property="roleName"/>
+        <result column="del_flag" property="delFlag"/>
+        <result column="version" property="version"/>
+        <result column="create_at" property="createAt"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_at" property="updateAt"/>
+        <result column="update_by" property="updateBy"/>
+    </resultMap>
+
+    <!-- 通用设置 -->
+    <!-- 通用查询列 -->
+    <sql id="Base_Column_List">
+        role_id, role_key, role_name, del_flag, version, create_at, create_by, update_at, update_by
+</sql>
+
+    <!-- 通用条件列 -->
+    <sql id="SysRoleByCondition">
+        <if test="roleKey!=null and roleKey!=''">
+            AND role_key = #{roleKey}
+        </if>
+        <if test="roleName!=null and roleName!=''">
+            AND role_name = #{roleName}
+        </if>
+        <if test="delFlag!=null and delFlag!=''">
+            AND del_flag = #{delFlag}
+        </if>
+        <if test="version!=null and version!=''">
+            AND version = #{version}
+        </if>
+        <if test="createAt!=null and createAt!=''">
+            AND create_at = #{createAt}
+        </if>
+        <if test="createBy!=null and createBy!=''">
+            AND create_by = #{createBy}
+        </if>
+        <if test="updateAt!=null and updateAt!=''">
+            AND update_at = #{updateAt}
+        </if>
+        <if test="updateBy!=null and updateBy!=''">
+            AND update_by = #{updateBy}
+        </if>
+    </sql>
+
+    <!-- 通用设置列 -->
+    <sql id="SysRoleSetColumns">
+        <if test="roleKey!=null and roleKey!=''">
+            role_key = #{roleKey},
+        </if>
+        <if test="roleName!=null and roleName!=''">
+            role_name = #{roleName},
+        </if>
+        <if test="delFlag!=null and delFlag!=''">
+            del_flag = #{delFlag},
+        </if>
+        <if test="version!=null and version!=''">
+            version = #{version},
+        </if>
+        <if test="createAt!=null and createAt!=''">
+            create_at = #{createAt},
+        </if>
+        <if test="createBy!=null and createBy!=''">
+            create_by = #{createBy},
+        </if>
+        <if test="updateAt!=null and updateAt!=''">
+            update_at = #{updateAt},
+        </if>
+        <if test="updateBy!=null and updateBy!=''">
+            update_by = #{updateBy},
+        </if>
+    </sql>
+
+    <!-- 查询表sys_role所有信息 -->
+    <select id="findAllSysRole" resultMap="SysRoleMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_role
+    </select>
+
+    <!-- 根据主键roleId查询表sys_role信息 -->
+    <select id="findSysRoleByroleId" resultMap="SysRoleMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_role
+        WHERE role_id=#{roleId}
+    </select>
+
+    <!-- 根据条件查询表sys_role信息 -->
+    <select id="findSysRoleByCondition" resultMap="SysRoleMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_role
+        WHERE 1=1
+        <include refid="SysRoleByCondition"/>
+    </select>
+
+    <!-- 根据主键roleId删除表sys_role信息 -->
+    <delete id="deleteSysRoleByroleId">
+        DELETE FROM
+        sys_role
+        WHERE role_id=#{roleId}
+    </delete>
+
+    <!-- 根据主键roleId更新表sys_role信息 -->
+    <update id="updateSysRoleByroleId" parameterType="SysRole">
+        UPDATE sys_role
+        <set>
+            <include refid="SysRoleSetColumns"/>
+        </set>
+        WHERE
+        role_id=#{roleId}
+    </update>
+
+    <!-- 新增表sys_role信息 -->
+    <insert id="addSysRole">
+    INSERT INTO sys_role (
+        role_id
+        ,role_key
+        ,role_name
+        ,del_flag
+        ,version
+        ,create_at
+        ,create_by
+        ,update_at
+        ,update_by
+        ) VALUES (
+        #{roleId}
+        ,#{roleKey}
+        ,#{roleName}
+        ,#{delFlag}
+        ,#{version}
+        ,#{createAt}
+        ,#{createBy}
+        ,#{updateAt}
+        ,#{updateBy}
+        )
+        </insert>
+
+    <select id="selectSysRoleByUserId" parameterType="Integer" resultType="SysRole">
+        SELECT
+            r.*
+        FROM
+            sys_user_role ur
+            LEFT JOIN sys_role r ON ur.role_id = r.role_id
+        WHERE
+            ur.user_id = #{userId}
+    </select>
+</mapper>

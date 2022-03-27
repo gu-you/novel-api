@@ -1,19 +1,17 @@
-package com.example.novel.mapper;
+package com.example.novel.service;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.novel.domain.SysUserRole;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
  * @author youwenkai
- * @ClassName: SysUserRoleMapper
- * @Description: TODO   系统-用户权限关联表 持久层
+ * @ClassName: ISysUserRoleService
+ * @Description: TODO   系统-用户权限关联表 服务类
  * @date 2022-03-27
  */
-@Mapper
-public interface SysUserRoleMapper extends BaseMapper<SysUserRole> {
+public interface ISysUserRoleService extends IService<SysUserRole> {
 
     /**
      * 系统-用户权限关联表查询列表
@@ -70,7 +68,4 @@ public interface SysUserRoleMapper extends BaseMapper<SysUserRole> {
      * @return
      */
     int deleteSysUserRoleByIds(Integer[] ids);
-
-
 }
-

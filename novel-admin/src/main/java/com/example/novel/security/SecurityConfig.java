@@ -1,8 +1,6 @@
 package com.example.novel.security;
 
 import com.example.novel.domain.AdminUserDetails;
-import com.example.novel.domain.SysRole;
-import com.example.novel.domain.SysUser;
 import com.example.novel.jwt.JwtAuthenticationTokenFilter;
 import com.example.novel.jwt.RestAuthenticationEntryPoint;
 import com.example.novel.mapper.SysRoleMapper;

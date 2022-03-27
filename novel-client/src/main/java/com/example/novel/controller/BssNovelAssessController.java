@@ -1,101 +1,121 @@
-// package com.example.novel.controller;
-//
-// import cn.hutool.core.util.StrUtil;
-// import com.baomidou.mybatisplus.mapper.EntityWrapper;
-// import com.baomidou.mybatisplus.plugins.Page;
-// import com.example.novel.BaseController;
-// import com.example.novel.contant.ResultContant;
-// import com.example.novel.domain.AjaxResult;
-// import com.example.novel.domain.BssNovelAssess;
-// import com.example.novel.service.BssNovelAssessService;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Controller;
-// import org.springframework.web.bind.annotation.RequestMapping;
-// import org.springframework.web.bind.annotation.RequestMethod;
-//
-// import java.util.List;
-//
-// /**
-//  * @author You
-//  * @ClassName: BssNovelAssessController
-//  * @Description: TODO(这里用一句话描述这个类的作用)
-//  * @date 2022-03-26
-//  */
-// @Controller
-// @RequestMapping(value = "/bssNovelAssess")
-// public class BssNovelAssessController extends BaseController {
-//     @Autowired
-//     private BssNovelAssessService bssNovelAssessService;
-//
-//     @RequestMapping(method = RequestMethod.POST, value = "/add")
-//     public AjaxResult add(BssNovelAssess bssNovelAssess) {
-//         try {
-//             bssNovelAssessService.insert(bssNovelAssess);
-//             return success(200, ResultContant.SUCCESS);
-//         } catch (Exception e) {
-//             e.printStackTrace();
-//             return error(500, ResultContant.ERROR);
-//         }
-//     }
-//
-//     @RequestMapping(method = RequestMethod.POST, value = "/edit")
-//     public AjaxResult edit(BssNovelAssess bssNovelAssess) {
-//         try {
-//             bssNovelAssessService.updateById(bssNovelAssess);
-//             return success(200, ResultContant.SUCCESS);
-//         } catch (Exception e) {
-//             e.printStackTrace();
-//             return error(500, ResultContant.ERROR);
-//         }
-//     }
-//
-//     @RequestMapping(method = RequestMethod.DELETE, value = "/delete")
-//     public AjaxResult delete(String ids) {
-//         //ValidateUtil.isNotBlank(ids, "主键参数非法，操作失败，请检查");
-//         try {
-//             List<String> idList = StrUtil.split(ids, ',');
-//             bssNovelAssessService.deleteBatchIds(idList);
-//             return success(200, ResultContant.SUCCESS);
-//         } catch (Exception e) {
-//             e.printStackTrace();
-//             return error(500, ResultContant.ERROR);
-//         }
-//     }
-//
-//     @RequestMapping(method = RequestMethod.GET, value = "/detail")
-//     public AjaxResult detail(String id) {
-//         try {
-//             //ValidateUtil.isNotBlank(id, "主键参数非法，操作失败，请检查");
-//             BssNovelAssess bssNovelAssess = bssNovelAssessService.selectById(id);
-//             return success(bssNovelAssess, ResultContant.SUCCESS);
-//         } catch (Exception e) {
-//             e.printStackTrace();
-//             return error(500, ResultContant.ERROR);
-//         }
-//     }
-//
-//     @RequestMapping(method = RequestMethod.GET, value = "/queryList")
-//     public AjaxResult queryList(BssNovelAssess bssNovelAssess) {
-//         try {
-//             EntityWrapper<BssNovelAssess> wrapper = new EntityWrapper<BssNovelAssess>();
-//             List<BssNovelAssess> list = bssNovelAssessService.selectList(wrapper);
-//             return success(list, ResultContant.SUCCESS);
-//         } catch (Exception e) {
-//             e.printStackTrace();
-//             return error(500, ResultContant.ERROR);
-//         }
-//     }
-//
-//     @RequestMapping(method = RequestMethod.GET, value = "/queryPageList")
-//     public AjaxResult queryPageList() {
-//         try {
-//             EntityWrapper<BssNovelAssess> wrapper = new EntityWrapper<BssNovelAssess>();
-//             Page<BssNovelAssess> pg = new Page<BssNovelAssess>(1, 10);
-//             Page<BssNovelAssess> list = bssNovelAssessService.selectPage(pg, wrapper);
-//             return success(list, ResultContant.SUCCESS);
-//         } catch (Exception e) {
-//             e.printStackTrace();
-//             return error(500, ResultContant.ERROR);
-//         }
-//     }
-// }
+package com.example.novel.controller;
+
+import com.example.novel.BaseController;
+import com.example.novel.contant.ResultContant;
+import com.example.novel.domain.AjaxResult;
+import com.example.novel.domain.BssNovelAssess;
+import com.example.novel.domain.PageTable;
+import com.example.novel.service.IBssNovelAssessService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * @author youwenkai
+ * @ClassName: BssNovelAssessController
+ * @Description: TODO   业务-评论 服务类
+ * @date 2022-03-27
+ */
+@Api(tags = "业务-评论")
+@RestController
+@RequestMapping("/novel/assess")
+public class BssNovelAssessController extends BaseController {
+
+    @Autowired
+    private IBssNovelAssessService iBssNovelAssessService;
+
+    @GetMapping("/list")
+    @ApiOperation(value = "业务-评论分页列表", response = BssNovelAssess.class)
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "pageNum", value = "页面", dataType = "Integer"),
+            @ApiImplicitParam(name = "pageSize", value = "页面数据量", dataType = "Integer"),
+    })
+    public PageTable list(BssNovelAssess bssNovelAssess) {
+        startPage();
+        List<BssNovelAssess> list = null;
+        try {
+            list = iBssNovelAssessService.selectBssNovelAssessList(bssNovelAssess);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return getTable(list);
+    }
+
+    @GetMapping("/getInfo/{id}")
+    @ApiOperation(value = "业务-评论详情(单个条目)", response = BssNovelAssess.class)
+    public AjaxResult info(@PathVariable Integer id) {
+        try {
+            BssNovelAssess bssNovelAssess = iBssNovelAssessService.selectBssNovelAssessById(id);
+            return success(bssNovelAssess, ResultContant.SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return error(500, ResultContant.ERROR);
+        }
+    }
+
+    @GetMapping("/getInfos/{ids}")
+    @ApiOperation(value = "业务-评论详情(多个条目)", response = BssNovelAssess.class)
+    public AjaxResult info(@PathVariable Integer[] ids) {
+        try {
+            List<BssNovelAssess> list = iBssNovelAssessService.selectBssNovelAssessByIds(ids);
+            return success(list, ResultContant.SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return error(500, ResultContant.ERROR);
+        }
+    }
+
+    @PostMapping
+    @ApiOperation(value = "业务-评论新增")
+    public AjaxResult add(@RequestBody BssNovelAssess bssNovelAssess) {
+        try {
+            iBssNovelAssessService.insertBssNovelAssess(bssNovelAssess);
+            return success(bssNovelAssess, ResultContant.SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return error(500, ResultContant.ERROR);
+        }
+    }
+
+    @PutMapping
+    @ApiOperation(value = "业务-评论修改")
+    public AjaxResult edit(@RequestBody BssNovelAssess bssNovelAssess) {
+        try {
+            iBssNovelAssessService.updateBssNovelAssess(bssNovelAssess);
+            return success(bssNovelAssess, ResultContant.SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return error(500, ResultContant.ERROR);
+        }
+    }
+
+    @DeleteMapping(value = "/{id}")
+    @ApiOperation(value = "业务-评论删除(单个条目)")
+    public AjaxResult remove(@PathVariable Integer id) {
+        try {
+            iBssNovelAssessService.deleteBssNovelAssessById(id);
+            return success(200, ResultContant.SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return error(500, ResultContant.ERROR);
+        }
+
+    }
+
+    @DeleteMapping(value = "/removes/{ids}")
+    @ApiOperation(value = "业务-评论删除(多个条目)")
+    public AjaxResult removes(@PathVariable Integer[] ids) {
+        try {
+            iBssNovelAssessService.deleteBssNovelAssessByIds(ids);
+            return success(200, ResultContant.SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return error(500, ResultContant.ERROR);
+        }
+    }
+}

@@ -1,20 +1,18 @@
-package com.example.novel.mapper;
+package com.example.novel.service;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.novel.domain.SysRole;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+
 /**
  * @author youwenkai
- * @ClassName: SysRoleMapper
- * @Description: TODO   系统-权限 持久层
+ * @ClassName: ISysRoleService
+ * @Description: TODO   系统-权限 服务类
  * @date 2022-03-27
  */
-@Mapper
-public interface SysRoleMapper extends BaseMapper<SysRole> {
+public interface ISysRoleService extends IService<SysRole> {
 
     /**
      * 系统-权限查询列表
@@ -77,6 +75,5 @@ public interface SysRoleMapper extends BaseMapper<SysRole> {
      * @param userId 用户id
      * @return
      */
-    List<SysRole> selectSysRoleByUserId(@Param("userId") Integer userId);
+    List<SysRole> selectSysRoleByUserId(Integer userId);
 }
-

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.novel.mapper.BssNovelInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BssNovelInfoMap" type="BssNovelInfo">
+        <id column="id" property="id"/>
+        <result column="novel_name" property="novelName"/>
+        <result column="sort_id" property="sortId"/>
+        <result column="del_flag" property="delFlag"/>
+        <result column="file_path" property="filePath"/>
+        <result column="file_cover_path" property="fileCoverPath"/>
+        <result column="synopsis" property="synopsis"/>
+        <result column="word_num" property="wordNum"/>
+        <result column="is_end" property="isEnd"/>
+        <result column="author" property="author"/>
+        <result column="protagonist" property="protagonist"/>
+        <result column="catalogue" property="catalogue"/>
+        <result column="is_shelves" property="isShelves"/>
+        <result column="create_at" property="createAt"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_at" property="updateAt"/>
+    </resultMap>
+
+    <!-- 通用设置 -->
+    <!-- 通用查询列 -->
+    <sql id="Base_Column_List">
+        id, novel_name, sort_id, del_flag, file_path, file_cover_path, synopsis, word_num, is_end, author, protagonist, catalogue, is_shelves, create_at, create_by, update_by, update_at
+</sql>
+
+    <!-- 通用条件列 -->
+    <sql id="BssNovelInfoByCondition">
+        <if test="novelName!=null and novelName!=''">
+            AND novel_name = #{novelName}
+        </if>
+        <if test="sortId!=null and sortId!=''">
+            AND sort_id = #{sortId}
+        </if>
+        <if test="delFlag!=null and delFlag!=''">
+            AND del_flag = #{delFlag}
+        </if>
+        <if test="filePath!=null and filePath!=''">
+            AND file_path = #{filePath}
+        </if>
+        <if test="fileCoverPath!=null and fileCoverPath!=''">
+            AND file_cover_path = #{fileCoverPath}
+        </if>
+        <if test="synopsis!=null and synopsis!=''">
+            AND synopsis = #{synopsis}
+        </if>
+        <if test="wordNum!=null and wordNum!=''">
+            AND word_num = #{wordNum}
+        </if>
+        <if test="isEnd!=null and isEnd!=''">
+            AND is_end = #{isEnd}
+        </if>
+        <if test="author!=null and author!=''">
+            AND author = #{author}
+        </if>
+        <if test="protagonist!=null and protagonist!=''">
+            AND protagonist = #{protagonist}
+        </if>
+        <if test="catalogue!=null and catalogue!=''">
+            AND catalogue = #{catalogue}
+        </if>
+        <if test="isShelves!=null and isShelves!=''">
+            AND is_shelves = #{isShelves}
+        </if>
+        <if test="createAt!=null and createAt!=''">
+            AND create_at = #{createAt}
+        </if>
+        <if test="createBy!=null and createBy!=''">
+            AND create_by = #{createBy}
+        </if>
+        <if test="updateBy!=null and updateBy!=''">
+            AND update_by = #{updateBy}
+        </if>
+        <if test="updateAt!=null and updateAt!=''">
+            AND update_at = #{updateAt}
+        </if>
+    </sql>
+
+    <!-- 通用设置列 -->
+    <sql id="BssNovelInfoSetColumns">
+        <if test="novelName!=null and novelName!=''">
+            novel_name = #{novelName},
+        </if>
+        <if test="sortId!=null and sortId!=''">
+            sort_id = #{sortId},
+        </if>
+        <if test="delFlag!=null and delFlag!=''">
+            del_flag = #{delFlag},
+        </if>
+        <if test="filePath!=null and filePath!=''">
+            file_path = #{filePath},
+        </if>
+        <if test="fileCoverPath!=null and fileCoverPath!=''">
+            file_cover_path = #{fileCoverPath},
+        </if>
+        <if test="synopsis!=null and synopsis!=''">
+            synopsis = #{synopsis},
+        </if>
+        <if test="wordNum!=null and wordNum!=''">
+            word_num = #{wordNum},
+        </if>
+        <if test="isEnd!=null and isEnd!=''">
+            is_end = #{isEnd},
+        </if>
+        <if test="author!=null and author!=''">
+            author = #{author},
+        </if>
+        <if test="protagonist!=null and protagonist!=''">
+            protagonist = #{protagonist},
+        </if>
+        <if test="catalogue!=null and catalogue!=''">
+            catalogue = #{catalogue},
+        </if>
+        <if test="isShelves!=null and isShelves!=''">
+            is_shelves = #{isShelves},
+        </if>
+        <if test="createAt!=null and createAt!=''">
+            create_at = #{createAt},
+        </if>
+        <if test="createBy!=null and createBy!=''">
+            create_by = #{createBy},
+        </if>
+        <if test="updateBy!=null and updateBy!=''">
+            update_by = #{updateBy},
+        </if>
+        <if test="updateAt!=null and updateAt!=''">
+            update_at = #{updateAt},
+        </if>
+    </sql>
+
+    <!-- 查询表bss_novel_info所有信息 -->
+    <select id="findAllBssNovelInfo" resultMap="BssNovelInfoMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bss_novel_info
+    </select>
+
+    <!-- 根据主键id查询表bss_novel_info信息 -->
+    <select id="findBssNovelInfoByid" resultMap="BssNovelInfoMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bss_novel_info
+        WHERE id=#{id}
+    </select>
+
+    <!-- 根据条件查询表bss_novel_info信息 -->
+    <select id="findBssNovelInfoByCondition" resultMap="BssNovelInfoMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bss_novel_info
+        WHERE 1=1
+        <include refid="BssNovelInfoByCondition"/>
+    </select>
+
+    <!-- 根据主键id删除表bss_novel_info信息 -->
+    <delete id="deleteBssNovelInfoByid">
+        DELETE FROM
+        bss_novel_info
+        WHERE id=#{id}
+    </delete>
+
+    <!-- 根据主键id更新表bss_novel_info信息 -->
+    <update id="updateBssNovelInfoByid" parameterType="BssNovelInfo">
+        UPDATE bss_novel_info
+        <set>
+            <include refid="BssNovelInfoSetColumns"/>
+        </set>
+        WHERE
+        id=#{id}
+    </update>
+
+    <!-- 新增表bss_novel_info信息 -->
+    <insert id="addBssNovelInfo">
+    INSERT INTO bss_novel_info (
+        id
+        ,novel_name
+        ,sort_id
+        ,del_flag
+        ,file_path
+        ,file_cover_path
+        ,synopsis
+        ,word_num
+        ,is_end
+        ,author
+        ,protagonist
+        ,catalogue
+        ,is_shelves
+        ,create_at
+        ,create_by
+        ,update_by
+        ,update_at
+        ) VALUES (
+#{id}
+,#{novelName}
+,#{sortId}
+,#{delFlag}
+,#{filePath}
+,#{fileCoverPath}
+,#{synopsis}
+,#{wordNum}
+,#{isEnd}
+,#{author}
+,#{protagonist}
+,#{catalogue}
+,#{isShelves}
+,#{createAt}
+,#{createBy}
+,#{updateBy}
+,#{updateAt}
+        )
+        </insert>
+</mapper>

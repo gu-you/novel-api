@@ -1,20 +1,17 @@
-package com.example.novel.mapper;
+package com.example.novel.service;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.novel.domain.SysUser;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 /**
  * @author youwenkai
- * @ClassName: SysUserMapper
- * @Description: TODO   系统-用户表 持久层
+ * @ClassName: ISysUserService
+ * @Description: TODO   系统-用户表 服务类
  * @date 2022-03-27
  */
-@Mapper
-public interface SysUserMapper extends BaseMapper<SysUser> {
+public interface ISysUserService extends IService<SysUser> {
 
     /**
      * 系统-用户表查询列表
@@ -73,10 +70,17 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
     int deleteSysUserByIds(Integer[] ids);
 
     /**
+     * 登陆授权token
+     * @param userName 用户名
+     * @param passWord 密码
+     * @return token
+     */
+    String login(String userName, String passWord);
+
+    /**
      * 根据用户名查询用户
      * @param userName 用户名
      * @return SysUser
      */
-    SysUser selectSysUserByUserName(@Param("userName") String userName);
+    SysUser selectSysUserByUserName(String userName);
 }
-

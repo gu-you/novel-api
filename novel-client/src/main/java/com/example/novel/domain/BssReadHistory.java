@@ -1,92 +1,69 @@
 package com.example.novel.domain;
 
 import com.example.novel.BaseEntity;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
- * @author You
+ * @author youwenkai
  * @ClassName: BssReadHistory
- * @Description: TODO(这里用一句话描述这个类的作用)
- * @date 2022-03-26
+ * @Description: TODO   阅读历史 服务类
+ * @date 2022-03-27
  */
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-// @TableName("bss_read_history")
+@ApiModel("阅读历史")
 public class BssReadHistory extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
-
-    // @TableId(value = "id", type = IdType.ID_WORKER)
     private Integer id;
-
-
     /**
      * 用户id
      */
-    // @TableField("user_id")
+    @ApiModelProperty("用户id")
     private Integer userId;
-
-
     /**
      * 小说id
      */
-    // @TableField("novel_info_id")
+    @ApiModelProperty("小说id")
     private Integer novelInfoId;
-
-
     /**
      * 阅读进度
      */
-    // @TableField("read_progress")
+    @ApiModelProperty("阅读进度")
     private String readProgress;
-
-
     /**
      * 浏览时间
      */
-    // @TableField("browse_time")
-    private Date browseTime;
-
-
+    @ApiModelProperty("浏览时间")
+    private LocalDateTime browseTime;
     /**
      * 是否加入书架
      */
-    // @TableField("is_book_shelf")
+    @ApiModelProperty("是否加入书架")
     private String isBookShelf;
-
-
     /**
      * 是否删除
      */
-    // @TableField("del_flag")
-    // @TableLogic
+    @ApiModelProperty("是否删除")
     private String delFlag;
 
-
-    // @TableField(value = "create_at", fill = FieldFill.INSERT)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createAt;
 
-
-    // @TableField("create_by")
     private String createBy;
 
-
-    // @TableField(value = "update_at", fill = FieldFill.INSERT_UPDATE)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateAt;
 
-
-    // @TableField("update_by")
     private String updateBy;
+
+    private Integer[] ids;
 }

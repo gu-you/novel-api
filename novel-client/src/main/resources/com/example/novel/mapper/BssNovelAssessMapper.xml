@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.novel.mapper.BssNovelAssessMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BssNovelAssessMap" type="BssNovelAssess">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="novel_info_id" property="novelInfoId"/>
+        <result column="assess_content" property="assessContent"/>
+        <result column="superior_id" property="superiorId"/>
+        <result column="fabulous_num" property="fabulousNum"/>
+        <result column="comment_id" property="commentId"/>
+        <result column="score" property="score"/>
+        <result column="de_flag" property="deFlag"/>
+        <result column="create_at" property="createAt"/>
+        <result column="create_by" property="createBy"/>
+    </resultMap>
+
+    <!-- 通用设置 -->
+    <!-- 通用查询列 -->
+    <sql id="Base_Column_List">
+        id, user_id, novel_info_id, assess_content, superior_id, fabulous_num, comment_id, score, de_flag, create_at, create_by
+</sql>
+
+    <!-- 通用条件列 -->
+    <sql id="BssNovelAssessByCondition">
+        <if test="userId!=null and userId!=''">
+            AND user_id = #{userId}
+        </if>
+        <if test="novelInfoId!=null and novelInfoId!=''">
+            AND novel_info_id = #{novelInfoId}
+        </if>
+        <if test="assessContent!=null and assessContent!=''">
+            AND assess_content = #{assessContent}
+        </if>
+        <if test="superiorId!=null and superiorId!=''">
+            AND superior_id = #{superiorId}
+        </if>
+        <if test="fabulousNum!=null and fabulousNum!=''">
+            AND fabulous_num = #{fabulousNum}
+        </if>
+        <if test="commentId!=null and commentId!=''">
+            AND comment_id = #{commentId}
+        </if>
+        <if test="score!=null and score!=''">
+            AND score = #{score}
+        </if>
+        <if test="deFlag!=null and deFlag!=''">
+            AND de_flag = #{deFlag}
+        </if>
+        <if test="createAt!=null and createAt!=''">
+            AND create_at = #{createAt}
+        </if>
+        <if test="createBy!=null and createBy!=''">
+            AND create_by = #{createBy}
+        </if>
+    </sql>
+
+    <!-- 通用设置列 -->
+    <sql id="BssNovelAssessSetColumns">
+        <if test="userId!=null and userId!=''">
+            user_id = #{userId},
+        </if>
+        <if test="novelInfoId!=null and novelInfoId!=''">
+            novel_info_id = #{novelInfoId},
+        </if>
+        <if test="assessContent!=null and assessContent!=''">
+            assess_content = #{assessContent},
+        </if>
+        <if test="superiorId!=null and superiorId!=''">
+            superior_id = #{superiorId},
+        </if>
+        <if test="fabulousNum!=null and fabulousNum!=''">
+            fabulous_num = #{fabulousNum},
+        </if>
+        <if test="commentId!=null and commentId!=''">
+            comment_id = #{commentId},
+        </if>
+        <if test="score!=null and score!=''">
+            score = #{score},
+        </if>
+        <if test="deFlag!=null and deFlag!=''">
+            de_flag = #{deFlag},
+        </if>
+        <if test="createAt!=null and createAt!=''">
+            create_at = #{createAt},
+        </if>
+        <if test="createBy!=null and createBy!=''">
+            create_by = #{createBy},
+        </if>
+    </sql>
+
+    <!-- 查询表bss_novel_assess所有信息 -->
+    <select id="findAllBssNovelAssess" resultMap="BssNovelAssessMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bss_novel_assess
+    </select>
+
+    <!-- 根据主键id查询表bss_novel_assess信息 -->
+    <select id="findBssNovelAssessByid" resultMap="BssNovelAssessMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bss_novel_assess
+        WHERE id=#{id}
+    </select>
+
+    <!-- 根据条件查询表bss_novel_assess信息 -->
+    <select id="findBssNovelAssessByCondition" resultMap="BssNovelAssessMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bss_novel_assess
+        WHERE 1=1
+        <include refid="BssNovelAssessByCondition"/>
+    </select>
+
+    <!-- 根据主键id删除表bss_novel_assess信息 -->
+    <delete id="deleteBssNovelAssessByid">
+        DELETE FROM
+        bss_novel_assess
+        WHERE id=#{id}
+    </delete>
+
+    <!-- 根据主键id更新表bss_novel_assess信息 -->
+    <update id="updateBssNovelAssessByid" parameterType="BssNovelAssess">
+        UPDATE bss_novel_assess
+        <set>
+            <include refid="BssNovelAssessSetColumns"/>
+        </set>
+        WHERE
+        id=#{id}
+    </update>
+
+    <!-- 新增表bss_novel_assess信息 -->
+    <insert id="addBssNovelAssess">
+    INSERT INTO bss_novel_assess (
+        id
+        ,user_id
+        ,novel_info_id
+        ,assess_content
+        ,superior_id
+        ,fabulous_num
+        ,comment_id
+        ,score
+        ,de_flag
+        ,create_at
+        ,create_by
+        ) VALUES (
+#{id}
+,#{userId}
+,#{novelInfoId}
+,#{assessContent}
+,#{superiorId}
+,#{fabulousNum}
+,#{commentId}
+,#{score}
+,#{deFlag}
+,#{createAt}
+,#{createBy}
+        )
+        </insert>
+</mapper>

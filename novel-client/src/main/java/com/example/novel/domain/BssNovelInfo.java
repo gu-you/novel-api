@@ -1,7 +1,8 @@
 package com.example.novel.domain;
 
 import com.example.novel.BaseEntity;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,125 +12,87 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author You
+ * @author youwenkai
  * @ClassName: BssNovelInfo
- * @Description: TODO(这里用一句话描述这个类的作用)
- * @date 2022-03-26
+ * @Description: TODO   业务-小说详情 服务类
+ * @date 2022-03-27
  */
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-// @TableName("bss_novel_info")
+@ApiModel("业务-小说详情")
 public class BssNovelInfo extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
-
-    // @TableField("id")
     private Integer id;
-
-
     /**
      * 小说名称
      */
-    // @TableField("novel_name")
+    @ApiModelProperty("小说名称")
     private String novelName;
-
-
     /**
      * 分类id
      */
-    // @TableField("sort_id")
+    @ApiModelProperty("分类id")
     private Integer sortId;
-
-
     /**
      * 是否删除
      */
-    // @TableField("del_flag")
-    // @TableLogic
+    @ApiModelProperty("是否删除")
     private String delFlag;
-
-
     /**
      * 文件地址
      */
-    // @TableField("file_path")
+    @ApiModelProperty("文件地址")
     private String filePath;
-
-
     /**
      * 封面地址
      */
-    // @TableField("file_cover_path")
+    @ApiModelProperty("封面地址")
     private String fileCoverPath;
-
-
     /**
      * 简介
      */
-    // @TableField("synopsis")
+    @ApiModelProperty("简介")
     private String synopsis;
-
-
     /**
      * 字数
      */
-    // @TableField("word_num")
+    @ApiModelProperty("字数")
     private String wordNum;
-
-
     /**
      * 是否完结
-    //  */
-    // @TableField("is_end")
+     */
+    @ApiModelProperty("是否完结")
     private String isEnd;
-
-
     /**
      * 作者
      */
-    // @TableField("author")
+    @ApiModelProperty("作者")
     private String author;
-
-
     /**
      * 主人公
      */
-    // @TableField("protagonist")
+    @ApiModelProperty("主人公")
     private String protagonist;
-
-
     /**
      * 最新目录
      */
-    // @TableField("catalogue")
+    @ApiModelProperty("最新目录")
     private String catalogue;
-
-
     /**
      * 是否上架
      */
-    // @TableField("is_shelves")
+    @ApiModelProperty("是否上架")
     private String isShelves;
 
-
-    // @TableField(value = "create_at", fill = FieldFill.INSERT)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createAt;
 
-
-    // @TableField("create_by")
     private String createBy;
 
-
-    // @TableField("update_by")
     private String updateBy;
 
-
-    // @TableField(value = "update_at", fill = FieldFill.INSERT_UPDATE)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateAt;
 
+    private Integer[] ids;
 }

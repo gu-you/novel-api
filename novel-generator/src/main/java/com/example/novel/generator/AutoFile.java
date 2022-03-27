@@ -21,7 +21,7 @@ import java.util.*;
  * @author lizhongbin
  * @date  2020-11-27
  */
-class CodeGenerator {
+class AutoFile {
 
     // 作者
     private static String AUTHOR = "youwenkai";
@@ -44,31 +44,31 @@ class CodeGenerator {
 
 
     // 父包名
-    private static String PARENT_PACKAGE         = "com.example.novel";
+    private static String PARENT_PACKAGE         = "";
     // 下边是分类包名
     // 输出包名 = 父包名 + "." + 分类包名
-    private static String CONTROLLER_PACKAGE     = "controller";
-    private static String SERVICE_PACKAGE        = "service";
-    private static String SERVICE_IMPL_PACKAGE   = "service.impl";
-    private static String MAPPER_PACKAGE         = "mapper";
-    private static String ENTITY_PACKAGE         = "domain";
+    private static String CONTROLLER_PACKAGE     = "";
+    private static String SERVICE_PACKAGE        = "";
+    private static String SERVICE_IMPL_PACKAGE   = "";
+    private static String MAPPER_PACKAGE         = "";
+    private static String ENTITY_PACKAGE         = "";
 
     // mapper存放路径 = OUTPUT_PATH + MAPPER_XML_PACKAGE
-    private static String MAPPER_XML_PACKAGE     = "/resources/com/example/novel/mapper/";
+    private static String MAPPER_XML_PACKAGE     = "";
 
     // 模板路径
     private static JSONObject templates = new JSONObject();
 
-//     // 注释掉模板表示不生成该类模板
-//     static{
-//         templates.put("CONTROLLER_TEMPLATE", "templates/controller.java.ftl");
-//         templates.put("SERVICE_TEMPLATE", "templates/service.java.ftl");
-//         templates.put("SERVICE_IMPL_TEMPLATE", "templates/serviceImpl.java.ftl");
-//         templates.put("ENTITY_TEMPLATE", "templates/entity.java.ftl");
-//         templates.put("MAPPER_TEMPLATE", "templates/mapper.java.ftl");
-//         templates.put("MAPPER_XML_TEMPLATE", "templates/mapper.xml.ftl");
-// //        templates.put("C_SHARP_ENTITY_TEMPLATE", "templates/C#entity.cs.ftl");
-//     }
+    // 注释掉模板表示不生成该类模板
+    static{
+        templates.put("CONTROLLER_TEMPLATE", "templates/controller.java.ftl");
+        templates.put("SERVICE_TEMPLATE", "templates/service.java.ftl");
+        templates.put("SERVICE_IMPL_TEMPLATE", "templates/serviceImpl.java.ftl");
+        templates.put("ENTITY_TEMPLATE", "templates/entity.java.ftl");
+        templates.put("MAPPER_TEMPLATE", "templates/mapper.java.ftl");
+        templates.put("MAPPER_XML_TEMPLATE", "templates/mapper.xml.ftl");
+//        templates.put("C_SHARP_ENTITY_TEMPLATE", "templates/C#entity.cs.ftl");
+    }
 
     // 生成的实体类尾缀  例如: UserEntity
     private static String Entity_SUFFIX = "";
@@ -272,7 +272,6 @@ class CodeGenerator {
         String ENTITY_TEMPLATE  = templates.getString("ENTITY_TEMPLATE");
         String MAPPER_TEMPLATE = templates.getString("MAPPER_TEMPLATE");
         String MAPPER_XML_TEMPLATE  = templates.getString("MAPPER_XML_TEMPLATE");
-        String C_SHARP_ENTITY_TEMPLATE = templates.getString("C_SHARP_ENTITY_TEMPLATE");
         // 实体类文件输出
         list.add(new FileOutConfig(ENTITY_TEMPLATE) {
             @Override
@@ -285,7 +284,7 @@ class CodeGenerator {
         list.add(new FileOutConfig(MAPPER_XML_TEMPLATE) {
             @Override
             public String outputFile(TableInfo tableInfo) {
-                return OUTPUT_PATH + replaceDot("",MAPPER_XML_PACKAGE) +"/"+ tableInfo.getXmlName() + StringPool.DOT_XML;
+                return OUTPUT_PATH + "/java/" + replaceDot("",MAPPER_XML_PACKAGE) +"/"+ tableInfo.getXmlName() + StringPool.DOT_XML;
             }
         });
         // mapper文件输出

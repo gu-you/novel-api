@@ -1,19 +1,17 @@
-package com.example.novel.mapper;
+package com.example.novel.service;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.novel.domain.BssNovelSort;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
  * @author youwenkai
- * @ClassName: BssNovelSortMapper
- * @Description: TODO   业务-小说分类 持久层
+ * @ClassName: IBssNovelSortService
+ * @Description: TODO   业务-小说分类 服务类
  * @date 2022-03-27
  */
-@Mapper
-public interface BssNovelSortMapper extends BaseMapper<BssNovelSort> {
+public interface IBssNovelSortService extends IService<BssNovelSort> {
 
     /**
      * 业务-小说分类查询列表
@@ -70,7 +68,4 @@ public interface BssNovelSortMapper extends BaseMapper<BssNovelSort> {
      * @return
      */
     int deleteBssNovelSortByIds(Integer[] ids);
-
-
 }
-

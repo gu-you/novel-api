@@ -1,20 +1,17 @@
-package com.example.novel.mapper;
+package com.example.novel.service;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.novel.domain.BssCommentType;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-
 /**
  * @author youwenkai
- * @ClassName: BssCommentTypeMapper
- * @Description: TODO   业务-评论分类 持久层
+ * @ClassName: IBssCommentTypeService
+ * @Description: TODO   业务-评论分类 服务类
  * @date 2022-03-27
  */
-@Mapper
-public interface BssCommentTypeMapper extends BaseMapper<BssCommentType> {
+public interface IBssCommentTypeService extends IService<BssCommentType> {
 
     /**
      * 业务-评论分类查询列表
@@ -71,7 +68,4 @@ public interface BssCommentTypeMapper extends BaseMapper<BssCommentType> {
      * @return
      */
     int deleteBssCommentTypeByIds(Integer[] ids);
-
-
 }
-

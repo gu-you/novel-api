@@ -20,20 +20,22 @@ import java.util.Date;
 public class ${entity} extends BaseEntity implements Serializable  {
 
 <#list table.commonFields as value>
-        <#if value.comment!="">
-/**
- *  ${value.comment}
- */
-@ApiModelProperty("${value.comment}")
-</#if>
-private  ${value.propertyType}  ${value.capitalName};
+    <#if value.comment!="">
+        /**
+          * ${value.comment}
+          */
+        @ApiModelProperty(${value.comment})
+    </#if>
+    private  ${value.propertyType}  ${value.capitalName?uncap_first};
 </#list>
 <#list table.fields as value>
-        <#if value.comment!="">
-// ${value.comment}
-</#if>
-private  ${value.propertyType}  ${value.capitalName};
+    <#if value.comment!="">
+        /**
+        * ${value.comment}
+        */
+        @ApiModelProperty(${value.comment})
+    </#if>
+    private  ${value.propertyType}  ${value.capitalName?uncap_first};
 </#list>
-
 private Integer[] ids;
 }

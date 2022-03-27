@@ -1,19 +1,17 @@
-package com.example.novel.mapper;
+package com.example.novel.service;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.novel.domain.BssNovelInfo;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
  * @author youwenkai
- * @ClassName: BssNovelInfoMapper
- * @Description: TODO   业务-小说详情 持久层
+ * @ClassName: IBssNovelInfoService
+ * @Description: TODO   业务-小说详情 服务类
  * @date 2022-03-27
  */
-@Mapper
-public interface BssNovelInfoMapper extends BaseMapper<BssNovelInfo> {
+public interface IBssNovelInfoService extends IService<BssNovelInfo> {
 
     /**
      * 业务-小说详情查询列表
@@ -70,7 +68,4 @@ public interface BssNovelInfoMapper extends BaseMapper<BssNovelInfo> {
      * @return
      */
     int deleteBssNovelInfoByIds(Integer[] ids);
-
-
 }
-

@@ -3,7 +3,7 @@ package com.example.novel.controller;
 import com.example.novel.BaseController;
 import com.example.novel.domain.AjaxResult;
 import com.example.novel.domain.SysUser;
-import com.example.novel.service.SysUserService;
+import com.example.novel.service.ISysUserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SysLoginController extends BaseController {
     @Autowired
-    private SysUserService sysUserService;
+    private ISysUserService sysUserService;
 
     @ApiOperation(value = "登录以后返回token")
     @PostMapping("/login")

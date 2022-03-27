@@ -1,19 +1,17 @@
-package com.example.novel.mapper;
+package com.example.novel.service;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.novel.domain.BssReadHistory;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
  * @author youwenkai
- * @ClassName: BssReadHistoryMapper
- * @Description: TODO   阅读历史 持久层
+ * @ClassName: IBssReadHistoryService
+ * @Description: TODO   阅读历史 服务类
  * @date 2022-03-27
  */
-@Mapper
-public interface BssReadHistoryMapper extends BaseMapper<BssReadHistory> {
+public interface IBssReadHistoryService extends IService<BssReadHistory> {
 
     /**
      * 阅读历史查询列表
@@ -70,7 +68,4 @@ public interface BssReadHistoryMapper extends BaseMapper<BssReadHistory> {
      * @return
      */
     int deleteBssReadHistoryByIds(Integer[] ids);
-
-
 }
-

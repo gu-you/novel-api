@@ -1,7 +1,8 @@
 package com.example.novel.domain;
 
 import com.example.novel.BaseEntity;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,86 +13,63 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * @author You
+ * @author youwenkai
  * @ClassName: BssNovelAssess
- * @Description: TODO(这里用一句话描述这个类的作用)
- * @date 2022-03-26
+ * @Description: TODO   业务-评论 服务类
+ * @date 2022-03-27
  */
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-// @TableName("bss_novel_assess")
+@ApiModel("业务-评论")
 public class BssNovelAssess extends BaseEntity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
-
-    // @TableId(value = "id", type = IdType.ID_WORKER)
     private Integer id;
-
-
     /**
      * 用户ID
      */
-    // @TableField("user_id")
+    @ApiModelProperty("用户ID")
     private Integer userId;
-
-
     /**
      * 小说id
      */
-    // @TableField("novel_info_id")
+    @ApiModelProperty("小说id")
     private Integer novelInfoId;
-
-
     /**
      * 评论内容
      */
-    // @TableField("assess_content")
+    @ApiModelProperty("评论内容")
     private String assessContent;
-
-
     /**
      * 父级id
      */
-    // @TableField("superior_id")
+    @ApiModelProperty("父级id")
     private Integer superiorId;
-
-
     /**
      * 点赞
      */
-    // @TableField("fabulous_num")
+    @ApiModelProperty("点赞")
     private Long fabulousNum;
-
-
     /**
      * 评论类型
      */
-    // @TableField("comment_id")
+    @ApiModelProperty("评论类型")
     private Integer commentId;
-
-
     /**
      * 评分
      */
-    // @TableField("score")
+    @ApiModelProperty("评分")
     private BigDecimal score;
-
-
     /**
      * 是否删除
      */
-    // @TableField("de_flag")
+    @ApiModelProperty("是否删除")
     private String deFlag;
 
-
-    // @TableField(value = "create_at", fill = FieldFill.INSERT)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createAt;
 
-
-    // @TableField("create_by")
     private String createBy;
+
+    private Integer[] ids;
 }

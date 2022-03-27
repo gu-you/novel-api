@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.novel.mapper.BssNovelSortMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BssNovelSortMap" type="BssNovelSort">
+        <id column="id" property="id"/>
+        <result column="sort_name" property="sortName"/>
+        <result column="version" property="version"/>
+        <result column="del_flag" property="delFlag"/>
+        <result column="create_at" property="createAt"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_at" property="updateAt"/>
+        <result column="update_by" property="updateBy"/>
+    </resultMap>
+
+    <!-- 通用设置 -->
+    <!-- 通用查询列 -->
+    <sql id="Base_Column_List">
+        id, sort_name, version, del_flag, create_at, create_by, update_at, update_by
+</sql>
+
+    <!-- 通用条件列 -->
+    <sql id="BssNovelSortByCondition">
+        <if test="sortName!=null and sortName!=''">
+            AND sort_name = #{sortName}
+        </if>
+        <if test="version!=null and version!=''">
+            AND version = #{version}
+        </if>
+        <if test="delFlag!=null and delFlag!=''">
+            AND del_flag = #{delFlag}
+        </if>
+        <if test="createAt!=null and createAt!=''">
+            AND create_at = #{createAt}
+        </if>
+        <if test="createBy!=null and createBy!=''">
+            AND create_by = #{createBy}
+        </if>
+        <if test="updateAt!=null and updateAt!=''">
+            AND update_at = #{updateAt}
+        </if>
+        <if test="updateBy!=null and updateBy!=''">
+            AND update_by = #{updateBy}
+        </if>
+    </sql>
+
+    <!-- 通用设置列 -->
+    <sql id="BssNovelSortSetColumns">
+        <if test="sortName!=null and sortName!=''">
+            sort_name = #{sortName},
+        </if>
+        <if test="version!=null and version!=''">
+            version = #{version},
+        </if>
+        <if test="delFlag!=null and delFlag!=''">
+            del_flag = #{delFlag},
+        </if>
+        <if test="createAt!=null and createAt!=''">
+            create_at = #{createAt},
+        </if>
+        <if test="createBy!=null and createBy!=''">
+            create_by = #{createBy},
+        </if>
+        <if test="updateAt!=null and updateAt!=''">
+            update_at = #{updateAt},
+        </if>
+        <if test="updateBy!=null and updateBy!=''">
+            update_by = #{updateBy},
+        </if>
+    </sql>
+
+    <!-- 查询表bss_novel_sort所有信息 -->
+    <select id="findAllBssNovelSort" resultMap="BssNovelSortMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bss_novel_sort
+    </select>
+
+    <!-- 根据主键id查询表bss_novel_sort信息 -->
+    <select id="findBssNovelSortByid" resultMap="BssNovelSortMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bss_novel_sort
+        WHERE id=#{id}
+    </select>
+
+    <!-- 根据条件查询表bss_novel_sort信息 -->
+    <select id="findBssNovelSortByCondition" resultMap="BssNovelSortMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bss_novel_sort
+        WHERE 1=1
+        <include refid="BssNovelSortByCondition"/>
+    </select>
+
+    <!-- 根据主键id删除表bss_novel_sort信息 -->
+    <delete id="deleteBssNovelSortByid">
+        DELETE FROM
+        bss_novel_sort
+        WHERE id=#{id}
+    </delete>
+
+    <!-- 根据主键id更新表bss_novel_sort信息 -->
+    <update id="updateBssNovelSortByid" parameterType="BssNovelSort">
+        UPDATE bss_novel_sort
+        <set>
+            <include refid="BssNovelSortSetColumns"/>
+        </set>
+        WHERE
+        id=#{id}
+    </update>
+
+    <!-- 新增表bss_novel_sort信息 -->
+    <insert id="addBssNovelSort">
+    INSERT INTO bss_novel_sort (
+        id
+        ,sort_name
+        ,version
+        ,del_flag
+        ,create_at
+        ,create_by
+        ,update_at
+        ,update_by
+        ) VALUES (
+#{id}
+,#{sortName}
+,#{version}
+,#{delFlag}
+,#{createAt}
+,#{createBy}
+,#{updateAt}
+,#{updateBy}
+        )
+        </insert>
+</mapper>
