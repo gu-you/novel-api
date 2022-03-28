@@ -3,7 +3,7 @@
 <mapper namespace="com.example.novel.mapper.SysUserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="SysUserMap" type="SysUser">
+    <resultMap id="SysUserMap" type="com.example.novel.domain.SysUser">
         <id column="user_id" property="userId"/>
         <result column="id" property="id"/>
         <result column="user_name" property="userName"/>
@@ -151,7 +151,7 @@
     </delete>
 
     <!-- 根据主键userId更新表sys_user信息 -->
-    <update id="updateSysUserByuserId" parameterType="SysUser">
+    <update id="updateSysUserByuserId" parameterType="com.example.novel.domain.SysUser">
         UPDATE sys_user
         <set>
             <include refid="SysUserSetColumns"/>

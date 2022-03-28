@@ -22,11 +22,11 @@
             <artifactId>novel-client</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.example</groupId>
             <artifactId>novel-generator</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.example</groupId>
             <artifactId>novel-system</artifactId>

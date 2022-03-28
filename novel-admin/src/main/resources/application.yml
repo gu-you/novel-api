@@ -31,6 +31,8 @@ jwt:
 mybatis-plus:
   type-aliases-package: com.example.novel.domain
   mapper-locations: classpath:com.example.novel.mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
 
